@@ -5,7 +5,7 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.grey.shade300,
+        backgroundColor: Colors.white, //grey.shade300
         appBar: AppBar(
           title: const Text("I Am Rich"),
           backgroundColor: Colors.orange,
@@ -13,9 +13,14 @@ void main() {
           //leading: Icon(Icons.arrow_back_ios),
         ),
         body: const Center(
+          // child: SizedBox(
+          //     width: 5000, // Kích thước chiều rộng bạn muốn
+          //     height: 5000, // Kích thước chiều cao bạn muốn
           child: Image(
-            image: AssetImage('assets/images/rich.jpg'),
-            //
+            image: AssetImage("images/rich.jpg"),
+            width: 1000,
+            height: 1000,
+            //   ),
           ),
         ),
       ),
