@@ -1,6 +1,24 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:quizapp/Admin/admin_login.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+        options: FirebaseOptions(
+            apiKey: "AIzaSyD3QgdhIWFqA8St0FlKHU2Ay1IVmVSl7IU",
+            authDomain: "quizapp-fdef0.firebaseapp.com",
+            projectId: "quizapp-fdef0",
+            storageBucket: "quizapp-fdef0.appspot.com",
+            messagingSenderId: "787653348938",
+            appId: "1:787653348938:web:f56391e342876b8c59e0b3",
+            measurementId: "G-33GBH9LNMF"));
+  } else {
+    await Firebase.initializeApp();
+  }
+
   runApp(const MyApp());
 }
 
@@ -31,7 +49,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: AdminLogin(),
     );
   }
 }

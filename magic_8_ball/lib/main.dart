@@ -17,7 +17,7 @@ class BallPage extends StatelessWidget {
       backgroundColor: Colors.green[100],
       appBar: AppBar(
         backgroundColor: Colors.green[600],
-        title: Text('GeeksforGeeks'),
+        title: Text('Magic_8_ball'),
       ),
       body: Ball(),
     );
