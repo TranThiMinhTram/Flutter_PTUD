@@ -159,14 +159,15 @@ class _AdminLoginState extends State<AdminLogin> {
             "Your id is not correct",
             style: TextStyle(fontSize: 18.0),
           )));
-        } else if (result.data()['password'] != usernamecontroller.text.trim()) {
+        } else if (result.data()['password'] !=
+            usernamecontroller.text.trim()) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
             "Your password is not correct",
             style: TextStyle(fontSize: 18.0),
           )));
         } else {
-          Route route= MaterialPageRoute(builder: (context)=> Home)
+          // Route route= MaterialPageRoute(builder: (context)=>Home)// đang làm tới đây
         }
       });
     });
