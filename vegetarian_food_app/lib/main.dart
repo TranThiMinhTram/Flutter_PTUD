@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
 void main() {
+  Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyDZ3ZS-cELJAd7izw5CoG55H2VydN0Lu_A",
+          authDomain: "vegetarian-food-9e5e9.firebaseapp.com",
+          projectId: "vegetarian-food-9e5e9",
+          storageBucket: "vegetarian-food-9e5e9.appspot.com",
+          messagingSenderId: "1084879154851",
+          appId: "1:1084879154851:web:27a1b252525edc6dba9916"));
   runApp(const MyApp());
 }
 
