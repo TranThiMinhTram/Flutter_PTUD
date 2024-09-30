@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fooddeliveryapp/widget/widget_support.dart';
+import 'package:vegetarian_food_app/widget/widget_support.dart';
 
 class AddFood extends StatefulWidget {
   const AddFood({super.key});

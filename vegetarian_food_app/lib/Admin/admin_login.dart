@@ -28,10 +28,10 @@ class _AdminLoginState extends State<AdminLogin> {
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Color.fromARGB(255, 53, 51, 51), Colors.black],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight),
+                  gradient: LinearGradient(colors: [
+                    Color.fromARGB(255, 10, 87, 48),
+                    const Color(0xFF2A5018)
+                  ], begin: Alignment.topLeft, end: Alignment.bottomRight),
                   borderRadius: BorderRadius.vertical(
                       top: Radius.elliptical(
                           MediaQuery.of(context).size.width, 110.0))),
@@ -43,9 +43,9 @@ class _AdminLoginState extends State<AdminLogin> {
                   child: Column(
                     children: [
                       Text(
-                        "Let's start with\nAdmin!",
+                        "ADMIN",
                         style: TextStyle(
-                            color: Colors.black,
+                            color: const Color(0xFF2A5018),
                             fontSize: 25.0,
                             fontWeight: FontWeight.bold),
                       ),
@@ -56,7 +56,7 @@ class _AdminLoginState extends State<AdminLogin> {
                         elevation: 3.0,
                         borderRadius: BorderRadius.circular(20),
                         child: Container(
-                          height: MediaQuery.of(context).size.height / 2.2,
+                          height: MediaQuery.of(context).size.height / 1.8,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20),
@@ -131,14 +131,14 @@ class _AdminLoginState extends State<AdminLogin> {
                                 child: Container(
                                   padding: EdgeInsets.symmetric(vertical: 12.0),
                                   margin:
-                                      EdgeInsets.symmetric(horizontal: 20.0),
+                                      EdgeInsets.symmetric(horizontal: 120.0),
                                   width: MediaQuery.of(context).size.width,
                                   decoration: BoxDecoration(
-                                      color: Colors.black,
+                                      color: const Color(0xFF2A5018),
                                       borderRadius: BorderRadius.circular(10)),
                                   child: Center(
                                     child: Text(
-                                      "LogIn",
+                                      "Login",
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 20.0,
