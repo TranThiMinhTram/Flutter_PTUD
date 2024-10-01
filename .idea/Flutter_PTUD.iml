@@ -15,6 +15,24 @@
       <excludeFolder url="file://$MODULE_DIR$/signupform/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/signupform/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/signupform/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dicee_master/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dicee_master/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dicee_master/build" />
+      <excludeFolder url="file://$MODULE_DIR$/fooddeliveryapp/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/fooddeliveryapp/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/fooddeliveryapp/build" />
+      <excludeFolder url="file://$MODULE_DIR$/magic_8_ball/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/magic_8_ball/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/magic_8_ball/build" />
+      <excludeFolder url="file://$MODULE_DIR$/mi_cart/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/mi_cart/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/mi_cart/build" />
+      <excludeFolder url="file://$MODULE_DIR$/quizapp/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/quizapp/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/quizapp/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vegetarian_food_app/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vegetarian_food_app/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vegetarian_food_app/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

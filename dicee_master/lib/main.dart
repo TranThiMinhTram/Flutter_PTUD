@@ -10,7 +10,7 @@ void main() {
           title: const Text("Dicee"),
           backgroundColor: Colors.pink,
         ),
-        body: dicee(),
+        body: const dicee(),
       ),
     ),
   );

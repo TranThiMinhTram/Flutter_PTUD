@@ -7,7 +7,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
     await Firebase.initializeApp(
-        options: FirebaseOptions(
+        options: const FirebaseOptions(
             apiKey: "AIzaSyD3QgdhIWFqA8St0FlKHU2Ay1IVmVSl7IU",
             authDomain: "quizapp-fdef0.firebaseapp.com",
             projectId: "quizapp-fdef0",
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: AdminLogin(),
+      home: const AdminLogin(),
     );
   }
 }

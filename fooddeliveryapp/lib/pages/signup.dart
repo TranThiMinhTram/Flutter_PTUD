@@ -13,42 +13,40 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   String email = "", password = "", name = "";
-  TextEditingController namecontroller = new TextEditingController();
-  TextEditingController mailcontroller = new TextEditingController();
-  TextEditingController passwordcontroller = new TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController mailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
   final _formkey = GlobalKey<FormState>();
   registration() async {
-    if (password != null) {
-      try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password);
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.redAccent,
+          content: Text(
+            "Registered Successfully",
+            style: TextStyle(fontSize: 20.0),
+          )));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => BottomNav()));
+    } on FirebaseException catch (e) {
+      if (e.code == 'weak-password') {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            backgroundColor: Colors.redAccent,
+            backgroundColor: Colors.orangeAccent,
             content: Text(
-              "Registered Successfully",
-              style: TextStyle(fontSize: 20.0),
+              "Password provided is too weak",
+              style: TextStyle(fontSize: 10.0),
             )));
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => BottomNav()));
-      } on FirebaseException catch (e) {
-        if (e.code == 'weak-password') {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              backgroundColor: Colors.orangeAccent,
-              content: Text(
-                "Password provided is too weak",
-                style: TextStyle(fontSize: 10.0),
-              )));
-        } else if (e.code == "email-already-in-use") {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              backgroundColor: Colors.orangeAccent,
-              content: Text(
-                "Account already exsists",
-                style: TextStyle(fontSize: 18.0),
-              )));
-        }
+      } else if (e.code == "email-already-in-use") {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: Colors.orangeAccent,
+            content: Text(
+              "Account already exsists",
+              style: TextStyle(fontSize: 18.0),
+            )));
       }
     }
-  }
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +58,7 @@ class _SignUpState extends State<SignUp> {
               Container(
                 height: MediaQuery.of(context).size.height / 2.5,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
@@ -71,15 +69,15 @@ class _SignUpState extends State<SignUp> {
                     top: MediaQuery.of(context).size.height / 3),
                 height: MediaQuery.of(context).size.height / 2,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(40),
                         topRight: Radius.circular(40))),
-                child: Text(""),
+                child: const Text(""),
               ),
               Container(
-                margin: EdgeInsets.only(top: 60.0, left: 20.0, right: 20.0),
+                margin: const EdgeInsets.only(top: 60.0, left: 20.0, right: 20.0),
                 child: Column(
                   children: [
                     Center(
@@ -89,7 +87,7 @@ class _SignUpState extends State<SignUp> {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50.0,
                     ),
                     SingleChildScrollView(
@@ -97,7 +95,7 @@ class _SignUpState extends State<SignUp> {
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(20),
                         child: Container(
-                          padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                          padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height / 1.8,
                           decoration: BoxDecoration(
@@ -108,14 +106,14 @@ class _SignUpState extends State<SignUp> {
                             key: _formkey,
                             child: Column(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 30.0,
                                 ),
                                 Text(
                                   "Sign up",
                                   style: AppWiget.HeadlineTextFeildStyle(),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 30.0,
                                 ),
                                 TextFormField(
@@ -130,9 +128,9 @@ class _SignUpState extends State<SignUp> {
                                       hintText: 'Name',
                                       hintStyle:
                                           AppWiget.SemiBoldTextFeildStyle(),
-                                      prefixIcon: Icon(Icons.person_outlined)),
+                                      prefixIcon: const Icon(Icons.person_outlined)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 30.0,
                                 ),
                                 TextFormField(
@@ -147,9 +145,9 @@ class _SignUpState extends State<SignUp> {
                                       hintText: 'Email',
                                       hintStyle:
                                           AppWiget.SemiBoldTextFeildStyle(),
-                                      prefixIcon: Icon(Icons.email_outlined)),
+                                      prefixIcon: const Icon(Icons.email_outlined)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 30.0,
                                 ),
                                 TextFormField(
@@ -166,9 +164,9 @@ class _SignUpState extends State<SignUp> {
                                       hintStyle:
                                           AppWiget.SemiBoldTextFeildStyle(),
                                       prefixIcon:
-                                          Icon(Icons.password_outlined)),
+                                          const Icon(Icons.password_outlined)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 40.0,
                                 ),
                                 GestureDetector(
@@ -187,13 +185,13 @@ class _SignUpState extends State<SignUp> {
                                     elevation: 5.0,
                                     child: Container(
                                       padding:
-                                          EdgeInsets.symmetric(vertical: 8.0),
+                                          const EdgeInsets.symmetric(vertical: 8.0),
                                       width: 200,
                                       decoration: BoxDecoration(
-                                          color: Color(0xFFe74b1a),
+                                          color: const Color(0xFFe74b1a),
                                           borderRadius:
                                               BorderRadius.circular(20)),
-                                      child: Center(
+                                      child: const Center(
                                         child: Text(
                                           "Sign up",
                                           style: TextStyle(
@@ -212,13 +210,13 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 70.0,
                     ),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Login()));
+                            MaterialPageRoute(builder: (context) => const Login()));
                       },
                       child: Text(
                         "Already have an account? Login",
