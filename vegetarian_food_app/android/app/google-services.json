@@ -1,15 +1,15 @@
 {
   "project_info": {
     "project_number": "787653348938",
-    "project_id": "quizapp-fdef0",
-    "storage_bucket": "quizapp-fdef0.appspot.com"
+    "project_id": "vegetarian_food_app-fdef0",
+    "storage_bucket": "vegetarian_food_app-fdef0.appspot.com"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:787653348938:android:0fea299b91fae7bb59e0b3",
         "android_client_info": {
-          "package_name": "com.example.quizapp"
+          "package_name": "com.example.vegetarian_food_app"
         }
       },
       "oauth_client": [],
