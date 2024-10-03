@@ -66,7 +66,8 @@ class _LoginState extends State<Login> {
                 child: const Text(""),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 60.0, left: 20.0, right: 20.0),
+                margin:
+                    const EdgeInsets.only(top: 60.0, left: 20.0, right: 20.0),
                 child: Column(
                   children: [
                     Center(
@@ -116,7 +117,8 @@ class _LoginState extends State<Login> {
                                     hintText: 'Email',
                                     hintStyle:
                                         AppWiget.SemiBoldTextFeildStyle(),
-                                    prefixIcon: const Icon(Icons.email_outlined)),
+                                    prefixIcon:
+                                        const Icon(Icons.email_outlined)),
                               ),
                               const SizedBox(
                                 height: 30.0,
@@ -134,7 +136,8 @@ class _LoginState extends State<Login> {
                                     hintText: 'Password',
                                     hintStyle:
                                         AppWiget.SemiBoldTextFeildStyle(),
-                                    prefixIcon: const Icon(Icons.password_outlined)),
+                                    prefixIcon:
+                                        const Icon(Icons.password_outlined)),
                               ),
                               const SizedBox(
                                 height: 20.0,
@@ -172,8 +175,8 @@ class _LoginState extends State<Login> {
                                   borderRadius: BorderRadius.circular(20),
                                   elevation: 5.0,
                                   child: Container(
-                                    padding:
-                                        const EdgeInsets.symmetric(vertical: 8.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 8.0),
                                     width: 200,
                                     decoration: BoxDecoration(
                                         color: const Color(0xFFe74b1a),
@@ -202,8 +205,10 @@ class _LoginState extends State<Login> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const SignUp()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUp()));
                       },
                       child: Text(
                         "Don't have as account? Sign up",

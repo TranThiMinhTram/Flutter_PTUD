@@ -3,7 +3,7 @@ import 'dart:math';
 
 // Creates a Material App
 void main() => runApp(
-      MaterialApp(
+      const MaterialApp(
         home: BallPage(),
       ),
     );

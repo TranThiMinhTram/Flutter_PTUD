@@ -1,13 +1,23 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fooddeliveryapp/pages/login.dart';
 import 'package:fooddeliveryapp/pages/onboard.dart';
-import 'package:fooddeliveryapp/pages/signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+            apiKey: "AIzaSyCKkzddQBhK3ykkQ5QcY8Ed_gqHmZGO4VQ",
+            authDomain: "fooddeliveryapp-fa309.firebaseapp.com",
+            projectId: "fooddeliveryapp-fa309",
+            storageBucket: "fooddeliveryapp-fa309.appspot.com",
+            messagingSenderId: "734031433349",
+            appId: "1:734031433349:web:b11e6049f21443ec17e3ec"));
+  } else {
+    await Firebase.initializeApp();
+  }
   runApp(const MyApp());
 }
 
