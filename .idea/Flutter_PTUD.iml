@@ -36,6 +36,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vegetarian_food/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/vegetarian_food/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/vegetarian_food/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Greenfare/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/Greenfare/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Greenfare/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
