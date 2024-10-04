@@ -5,12 +5,9 @@ import 'package:vegetarian_food/admin/admin_login.dart';
 import 'package:vegetarian_food/admin/home_admin.dart';
 import 'package:vegetarian_food/pages/home.dart';
 import 'package:vegetarian_food/pages/signup.dart';
-
-// ignore: unused_import
 import 'package:vegetarian_food/pages/bottomnav.dart';
 import 'package:vegetarian_food/pages/login.dart';
 import 'package:vegetarian_food/pages/onboard.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:vegetarian_food/pages/wallet.dart';
 import 'firebase_options.dart';
 
