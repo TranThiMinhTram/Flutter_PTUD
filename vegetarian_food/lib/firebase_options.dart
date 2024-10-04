@@ -47,29 +47,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDMfj1CobwpaP_CjHDKFkNpzwoA1LAHVYs',
-    appId: '1:12079896292:web:151a7740d80b51967dfef1',
-    messagingSenderId: '12079896292',
-    projectId: 'fooddeliveryapp-4a1e6',
-    authDomain: 'fooddeliveryapp-4a1e6.firebaseapp.com',
-    storageBucket: 'fooddeliveryapp-4a1e6.appspot.com',
-    measurementId: 'G-47P9T6K7VV',
+    apiKey: "AIzaSyAqfpTIvJKurK1mXm73CzOho1SbgnWV5Tk",
+    authDomain: "vegetarian-food-76bdb.firebaseapp.com",
+    projectId: "vegetarian-food-76bdb",
+    storageBucket: "vegetarian-food-76bdb.appspot.com",
+    messagingSenderId: "959995023672",
+    appId: "1:959995023672:web:27f0194808ca76d9e131cd",
+    measurementId: "G-Z3D1FY5ZQ8",
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDW3ySooSGvwPMOowxl4jyFWSxi9-WXZc0',
-    appId: '1:12079896292:android:8fb0f77daad1f1107dfef1',
-    messagingSenderId: '12079896292',
-    projectId: 'fooddeliveryapp-4a1e6',
-    storageBucket: 'fooddeliveryapp-4a1e6.appspot.com',
+    apiKey: 'AIzaSyCg36r30Cz0GVFZifBZaryIjSk_nCJvS1c',
+    appId: '1:959995023672:android:854ba8b716032968e131cd',
+    messagingSenderId: '959995023672',
+    projectId: 'vegetarian-food-76bdb',
+    storageBucket: 'vegetarian-food-76bdb.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAWxxcF8e8zCNYCLB4boUgCtLvSprBOZkg',
+    apiKey: 'AIzaSyCrUEG-lOxaQYFPIdSttpe59Ib5-gwiLL0',
     appId: '1:12079896292:ios:b3ae5c732c9d34a87dfef1',
-    messagingSenderId: '12079896292',
-    projectId: 'fooddeliveryapp-4a1e6',
-    storageBucket: 'fooddeliveryapp-4a1e6.appspot.com',
-    iosBundleId: 'com.example.fooddeliveryapp',
+    messagingSenderId: '959995023672',
+    projectId: 'vegetarian-food-76bdb',
+    storageBucket: 'vegetarian-food-76bdb.appspot.com',
+    iosBundleId: 'com.example.vegetarianFood',
   );
 }

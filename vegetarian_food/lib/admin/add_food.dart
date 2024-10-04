@@ -67,14 +67,14 @@ class _AddFoodState extends State<AddFood> {
         if (kIsWeb && webImage != null) {
           // Xử lý tải ảnh cho Web
           Reference firebaseStorageRef =
-              FirebaseStorage.instance.ref().child("foodImages").child(addId);
+              FirebaseStorage.instance.ref().child("blogImages").child(addId);
           final UploadTask uploadTask = firebaseStorageRef
               .putData(webImage!); // Sử dụng webImage (Uint8List)
           downloadUrl = await (await uploadTask).ref.getDownloadURL();
         } else if (selectedImage != null) {
           // Xử lý tải ảnh cho Android/iOS
           Reference firebaseStorageRef =
-              FirebaseStorage.instance.ref().child("foodImages").child(addId);
+              FirebaseStorage.instance.ref().child("blogImages").child(addId);
           final UploadTask uploadTask =
               firebaseStorageRef.putFile(selectedImage!);
           downloadUrl = await (await uploadTask).ref.getDownloadURL();

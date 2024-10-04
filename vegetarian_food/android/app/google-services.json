@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "959995023672",
+    "project_id": "vegetarian-food-76bdb",
+    "storage_bucket": "vegetarian-food-76bdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959995023672:android:854ba8b716032968e131cd",
+        "android_client_info": {
+          "package_name": "com.example.vegetarian_food"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCg36r30Cz0GVFZifBZaryIjSk_nCJvS1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

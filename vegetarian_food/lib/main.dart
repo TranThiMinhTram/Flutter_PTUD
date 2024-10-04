@@ -1,7 +1,35 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:vegetarian_food/admin/admin_login.dart';
+import 'package:vegetarian_food/admin/home_admin.dart';
 import 'package:vegetarian_food/pages/home.dart';
+import 'package:vegetarian_food/pages/signup.dart';
 
-void main() {
+// ignore: unused_import
+import 'package:vegetarian_food/pages/bottomnav.dart';
+import 'package:vegetarian_food/pages/login.dart';
+import 'package:vegetarian_food/pages/onboard.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:vegetarian_food/pages/wallet.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  if (kIsWeb) {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+        options: FirebaseOptions(
+            apiKey: "AIzaSyAqfpTIvJKurK1mXm73CzOho1SbgnWV5Tk",
+            authDomain: "vegetarian-food-76bdb.firebaseapp.com",
+            projectId: "vegetarian-food-76bdb",
+            storageBucket: "vegetarian-food-76bdb.appspot.com",
+            messagingSenderId: "959995023672",
+            appId: "1:959995023672:web:27f0194808ca76d9e131cd",
+            measurementId: "G-Z3D1FY5ZQ8"));
+  } else {
+    await Firebase.initializeApp();
+  }
+
   runApp(const MyApp());
 }
 
@@ -33,6 +61,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
+        //home: HomeAdmin());
         home: Home());
   }
 }
