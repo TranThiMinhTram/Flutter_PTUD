@@ -5,7 +5,7 @@ import 'package:vegetarian_food/admin/admin_login.dart';
 import 'package:vegetarian_food/admin/home_admin.dart';
 import 'package:vegetarian_food/pages/home.dart';
 import 'package:vegetarian_food/pages/signup.dart';
-import 'package:vegetarian_food/pages/bottomnav.dart';
+//import 'package:vegetarian_food/pages/bottomnav.dart';
 import 'package:vegetarian_food/pages/login.dart';
 import 'package:vegetarian_food/pages/onboard.dart';
 import 'package:vegetarian_food/pages/wallet.dart';

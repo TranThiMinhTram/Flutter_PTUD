@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:vegetarian_food/widget/widget_support.dart';
 
 class Details extends StatefulWidget {
-  const Details({super.key});
+  String image, name, detail, price;
+  Details(
+      {required this.detail,
+      required this.image,
+      required this.name,
+      required this.price});
 
   @override
   State<Details> createState() => _DetailsState();
@@ -27,8 +32,8 @@ class _DetailsState extends State<Details> {
                   Icons.arrow_back_ios_new_outlined,
                   color: Colors.black,
                 )),
-            Image.asset(
-              "images/salad2.png",
+            Image.network(
+              widget.image,
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 2.5,
               fit: BoxFit.fill,
@@ -42,12 +47,8 @@ class _DetailsState extends State<Details> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Mediteranean",
+                      widget.name,
                       style: AppWidget.semiBooldTextFeildStyle(),
-                    ),
-                    Text(
-                      "Chickpea Salad",
-                      style: AppWidget.boldTextFeildStyle(),
                     ),
                   ],
                 ),
@@ -101,7 +102,7 @@ class _DetailsState extends State<Details> {
               height: 20.0,
             ),
             Text(
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+              widget.detail,
               maxLines: 3,
               style: AppWidget.LightTextFeildStyle(),
             ),
@@ -143,14 +144,14 @@ class _DetailsState extends State<Details> {
                         style: AppWidget.semiBooldTextFeildStyle(),
                       ),
                       Text(
-                        "\$28",
+                        "\$" + widget.price,
                         style: AppWidget.HeadlineTextFeildStyle(),
                       )
                     ],
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width / 2,
-                    padding: const EdgeInsets.all(8),
+                    padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(20)),

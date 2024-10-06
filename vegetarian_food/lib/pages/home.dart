@@ -54,7 +54,12 @@ class _HomeState extends State<Home> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Details()));
+                                builder: (context) => Details(
+                                      detail: ds["Details"],
+                                      name: ds["Name"],
+                                      price: ds["Price"],
+                                      image: ds["Image"],
+                                    )));
                       },
                       child: Container(
                         margin:
@@ -145,7 +150,12 @@ class _HomeState extends State<Home> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Details()));
+                                builder: (context) => Details(
+                                      detail: ds["Details"],
+                                      name: ds["Name"],
+                                      price: ds["Price"],
+                                      image: ds["Image"],
+                                    )));
                       },
                       child: Container(
                         margin: const EdgeInsets.all(4),
@@ -240,9 +250,6 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 30.0,
               ),
-              SizedBox(
-                height: 30.0,
-              ),
               allItemsVertically(),
             ],
           ),
@@ -258,7 +265,7 @@ class _HomeState extends State<Home> {
         children: [
           //pizza
           GestureDetector(
-              onTap: () {
+              onTap: () async {
                 pizza = true;
                 salad = false;
                 burger = false;
@@ -268,6 +275,8 @@ class _HomeState extends State<Home> {
                 dumpling = false;
                 soup = false;
                 porridge = false;
+
+                fooditemStream = await DatabaseMethods().getFoodItem("pizza");
                 setState(() {});
               },
               child: Material(
@@ -291,7 +300,7 @@ class _HomeState extends State<Home> {
           //salad
           const SizedBox(width: 20),
           GestureDetector(
-              onTap: () {
+              onTap: () async {
                 pizza = false;
                 salad = true;
                 burger = false;
@@ -301,6 +310,8 @@ class _HomeState extends State<Home> {
                 dumpling = false;
                 soup = false;
                 porridge = false;
+
+                fooditemStream = await DatabaseMethods().getFoodItem("salad");
                 setState(() {});
               },
               child: Material(
@@ -324,7 +335,7 @@ class _HomeState extends State<Home> {
           //burger
           const SizedBox(width: 20),
           GestureDetector(
-              onTap: () {
+              onTap: () async {
                 pizza = false;
                 salad = false;
                 burger = true;
@@ -334,6 +345,8 @@ class _HomeState extends State<Home> {
                 dumpling = false;
                 soup = false;
                 porridge = false;
+
+                fooditemStream = await DatabaseMethods().getFoodItem("burger");
                 setState(() {});
               },
               child: Material(
@@ -357,7 +370,7 @@ class _HomeState extends State<Home> {
           //rice_roll
           const SizedBox(width: 20),
           GestureDetector(
-              onTap: () {
+              onTap: () async {
                 pizza = false;
                 salad = false;
                 burger = false;
@@ -367,6 +380,8 @@ class _HomeState extends State<Home> {
                 dumpling = false;
                 soup = false;
                 porridge = false;
+                fooditemStream =
+                    await DatabaseMethods().getFoodItem("rice_roll");
                 setState(() {});
               },
               child: Material(
@@ -390,7 +405,7 @@ class _HomeState extends State<Home> {
           //noodle
           const SizedBox(width: 20),
           GestureDetector(
-              onTap: () {
+              onTap: () async {
                 pizza = false;
                 salad = false;
                 burger = false;
@@ -400,6 +415,7 @@ class _HomeState extends State<Home> {
                 dumpling = false;
                 soup = false;
                 porridge = false;
+                fooditemStream = await DatabaseMethods().getFoodItem("noodle");
                 setState(() {});
               },
               child: Material(
@@ -423,7 +439,7 @@ class _HomeState extends State<Home> {
           //bread
           const SizedBox(width: 20),
           GestureDetector(
-              onTap: () {
+              onTap: () async {
                 pizza = false;
                 salad = false;
                 burger = false;
@@ -433,6 +449,7 @@ class _HomeState extends State<Home> {
                 dumpling = false;
                 soup = false;
                 porridge = false;
+                fooditemStream = await DatabaseMethods().getFoodItem("bread");
                 setState(() {});
               },
               child: Material(
@@ -456,7 +473,7 @@ class _HomeState extends State<Home> {
           //dumpling
           const SizedBox(width: 20),
           GestureDetector(
-              onTap: () {
+              onTap: () async {
                 pizza = false;
                 salad = false;
                 burger = false;
@@ -466,6 +483,8 @@ class _HomeState extends State<Home> {
                 dumpling = true;
                 soup = false;
                 porridge = false;
+                fooditemStream =
+                    await DatabaseMethods().getFoodItem("dumpling");
                 setState(() {});
               },
               child: Material(
@@ -489,7 +508,7 @@ class _HomeState extends State<Home> {
           //soup
           const SizedBox(width: 20),
           GestureDetector(
-              onTap: () {
+              onTap: () async {
                 pizza = false;
                 salad = false;
                 burger = false;
@@ -499,6 +518,7 @@ class _HomeState extends State<Home> {
                 dumpling = false;
                 soup = true;
                 porridge = false;
+                fooditemStream = await DatabaseMethods().getFoodItem("soup");
                 setState(() {});
               },
               child: Material(
@@ -522,7 +542,7 @@ class _HomeState extends State<Home> {
           // porridge
           const SizedBox(width: 20),
           GestureDetector(
-              onTap: () {
+              onTap: () async {
                 pizza = false;
                 salad = false;
                 burger = false;
@@ -532,6 +552,8 @@ class _HomeState extends State<Home> {
                 dumpling = false;
                 soup = false;
                 porridge = true;
+                fooditemStream =
+                    await DatabaseMethods().getFoodItem("porridge");
                 setState(() {});
               },
               child: Material(
