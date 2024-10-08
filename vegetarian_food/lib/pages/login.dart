@@ -17,8 +17,8 @@ class _LoginState extends State<Login> {
 
   final _formkey = GlobalKey<FormState>();
 
-  TextEditingController useremailcontroller = new TextEditingController();
-  TextEditingController userpasswordcontroller = new TextEditingController();
+  TextEditingController useremailcontroller = TextEditingController();
+  TextEditingController userpasswordcontroller = TextEditingController();
 
   userLogin() async {
     try {

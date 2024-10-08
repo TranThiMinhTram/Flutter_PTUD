@@ -246,7 +246,7 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 30.0,
               ),
-              Container(height: 270, child: allItems()),
+              SizedBox(height: 270, child: allItems()),
               SizedBox(
                 height: 30.0,
               ),

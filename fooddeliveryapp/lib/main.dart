@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fooddeliveryapp/pages/home.dart';
 
-import 'package:fooddeliveryapp/pages/onboard.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {

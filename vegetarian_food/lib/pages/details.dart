@@ -4,7 +4,8 @@ import 'package:vegetarian_food/widget/widget_support.dart';
 class Details extends StatefulWidget {
   String image, name, detail, price;
   Details(
-      {required this.detail,
+      {super.key,
+      required this.detail,
       required this.image,
       required this.name,
       required this.price});
@@ -144,7 +145,7 @@ class _DetailsState extends State<Details> {
                         style: AppWidget.semiBooldTextFeildStyle(),
                       ),
                       Text(
-                        "\$" + widget.price,
+                        "\$${widget.price}",
                         style: AppWidget.HeadlineTextFeildStyle(),
                       )
                     ],

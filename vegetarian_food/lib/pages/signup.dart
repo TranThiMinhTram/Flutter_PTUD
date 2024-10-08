@@ -1,6 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:vegetarian_food/pages/bottomnav.dart';
@@ -17,45 +15,43 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   String email = "", password = "", name = "";
-  TextEditingController namecontroller = new TextEditingController();
-  TextEditingController passwordcontroller = new TextEditingController();
-  TextEditingController mailcontroller = new TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+  TextEditingController mailcontroller = TextEditingController();
   final _formkey = GlobalKey<FormState>();
 
   registration() async {
-    if (password != null) {
-      try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password);
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
 
+      ScaffoldMessenger.of(context).showSnackBar((SnackBar(
+        backgroundColor: Colors.green,
+        content: Text(
+          "Register Successfully",
+          style: TextStyle(fontSize: 21),
+        ),
+      )));
+
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => BottomNav()));
+    } on FirebaseException catch (e) {
+      if (e.code == 'weak-password') {
         ScaffoldMessenger.of(context).showSnackBar((SnackBar(
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.orangeAccent,
           content: Text(
-            "Register Successfully",
+            "Your Password is too weak!",
             style: TextStyle(fontSize: 21),
           ),
         )));
-
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => BottomNav()));
-      } on FirebaseException catch (e) {
-        if (e.code == 'weak-password') {
-          ScaffoldMessenger.of(context).showSnackBar((SnackBar(
-            backgroundColor: Colors.orangeAccent,
-            content: Text(
-              "Your Password is too weak!",
-              style: TextStyle(fontSize: 21),
-            ),
-          )));
-        } else if (e.code == "email-aldready-in-use") {
-          ScaffoldMessenger.of(context).showSnackBar((SnackBar(
-            backgroundColor: Colors.red,
-            content: Text(
-              "Account Already exists",
-              style: TextStyle(fontSize: 21),
-            ),
-          )));
-        }
+      } else if (e.code == "email-aldready-in-use") {
+        ScaffoldMessenger.of(context).showSnackBar((SnackBar(
+          backgroundColor: Colors.red,
+          content: Text(
+            "Account Already exists",
+            style: TextStyle(fontSize: 21),
+          ),
+        )));
       }
     }
   }
