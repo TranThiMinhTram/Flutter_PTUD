@@ -4,6 +4,8 @@ import 'edit_product.dart'; // Import Edit Product logic
 import 'delete_product.dart'; // Import Delete Product logic
 
 class ProductScreen extends StatefulWidget {
+  const ProductScreen({super.key});
+
   @override
   _ProductScreenState createState() => _ProductScreenState();
 }
@@ -19,7 +21,7 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dữ liệu sản phẩm'),
+        title: const Text('Dữ liệu sản phẩm'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -28,7 +30,7 @@ class _ProductScreenState extends State<ProductScreen> {
           children: [
             // Form to input product details
             _buildProductForm(),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             // List of products
             _buildProductList(),
           ],
@@ -43,39 +45,39 @@ class _ProductScreenState extends State<ProductScreen> {
       children: [
         TextField(
           controller: _nameController,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'Tên sản phẩm',
           ),
         ),
         TextField(
           controller: _categoryController,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'Loại sản phẩm',
           ),
         ),
         TextField(
           controller: _priceController,
           keyboardType: TextInputType.number,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'Giá sản phẩm',
           ),
         ),
-        SizedBox(height: 10),
-        Row(
+        const SizedBox(height: 10),
+        const Row(
           children: [
             Icon(Icons.folder),
             SizedBox(width: 8),
             Text('pexels-blaque-x-264516-863963.jpg'),
           ],
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Center(
           child: ElevatedButton(
             onPressed: () {
               addProduct(_nameController, _categoryController, _priceController,
                   products, setState);
             },
-            child: Text('THÊM SẢN PHẨM'),
+            child: const Text('THÊM SẢN PHẨM'),
           ),
         ),
       ],
@@ -104,14 +106,14 @@ class _ProductScreenState extends State<ProductScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.edit, color: Colors.yellow),
+                    icon: const Icon(Icons.edit, color: Colors.yellow),
                     onPressed: () {
                       editProduct(index, _nameController, _categoryController,
                           _priceController, products, setState);
                     },
                   ),
                   IconButton(
-                    icon: Icon(Icons.delete, color: Colors.red),
+                    icon: const Icon(Icons.delete, color: Colors.red),
                     onPressed: () {
                       deleteProduct(index, products, setState);
                     },

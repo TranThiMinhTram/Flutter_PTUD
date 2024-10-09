@@ -1,4 +1,4 @@
-//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:giuaki/home.dart';
 
@@ -167,30 +167,30 @@ class _AdminLoginState extends State<AdminLogin> {
     );
   }
 
-  // LoginAdmin() {
-  //   FirebaseFirestore.instance.collection("Admin").get().then((snapshot) {
-  //     for (var result in snapshot.docs) {
-  //       if (result.data()['id'] != usernamecontroller.text.trim()) {
-  //         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //             backgroundColor: Colors.orangeAccent,
-  //             content: Text(
-  //               "Your id is not correct",
-  //               style: TextStyle(fontSize: 18.0),
-  //             )));
-  //       } else if (result.data()['password'] !=
-  //           userpasswordcontroller.text.trim()) {
-  //         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //             backgroundColor: Colors.orangeAccent,
-  //             content: Text(
-  //               "Your password is not correct",
-  //               style: TextStyle(fontSize: 18.0),
-  //             )));
-  //       } else {
-  //         Route route =
-  //             MaterialPageRoute(builder: (context) => const HomeAdmin());
-  //         Navigator.pushReplacement(context, route);
-  //       }
-  //     }
-  //   });
-  // }
+  LoginAdmin() {
+    FirebaseFirestore.instance.collection("Admin").get().then((snapshot) {
+      for (var result in snapshot.docs) {
+        if (result.data()['id'] != usernamecontroller.text.trim()) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              backgroundColor: Colors.orangeAccent,
+              content: Text(
+                "Your id is not correct",
+                style: TextStyle(fontSize: 18.0),
+              )));
+        } else if (result.data()['password'] !=
+            userpasswordcontroller.text.trim()) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              backgroundColor: Colors.orangeAccent,
+              content: Text(
+                "Your password is not correct",
+                style: TextStyle(fontSize: 18.0),
+              )));
+        } else {
+          Route route =
+              MaterialPageRoute(builder: (context) => const ProductScreen());
+          Navigator.pushReplacement(context, route);
+        }
+      }
+    });
+  }
 }

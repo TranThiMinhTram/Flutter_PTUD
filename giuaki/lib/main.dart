@@ -1,7 +1,24 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:giuaki/login.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+            apiKey: "AIzaSyC2f1hchIwJxIWw1ehGR6ahvgaB1tBSR2Q",
+            authDomain: "giuaki-4c0a3.firebaseapp.com",
+            projectId: "giuaki-4c0a3",
+            storageBucket: "giuaki-4c0a3.appspot.com",
+            messagingSenderId: "348543622791",
+            appId: "1:348543622791:web:5d8f59b1076287892d2222",
+            measurementId: "G-V9FLZM9HVK"));
+  } else {
+    await Firebase.initializeApp();
+  }
+
   runApp(const MyApp());
 }
 
