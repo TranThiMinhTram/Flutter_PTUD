@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 // Function to delete a product
-void deleteProduct(
-    int index, List<Map<String, String>> products, Function setStateCallback) {
-  setStateCallback(() {
-    products.removeAt(index);
-  });
+Future<void> deleteProduct(String productId, Function fetchProducts) async {
+  await FirebaseFirestore.instance
+      .collection('products')
+      .doc(productId)
+      .delete();
+  fetchProducts(); // Refresh product list
 }

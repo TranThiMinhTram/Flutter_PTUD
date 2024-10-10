@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'add_product.dart'; // Import Add Product logic
 import 'edit_product.dart'; // Import Edit Product logic
 import 'delete_product.dart'; // Import Delete Product logic
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key});
@@ -15,13 +16,113 @@ class _ProductScreenState extends State<ProductScreen> {
   final TextEditingController _categoryController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();
 
-  List<Map<String, String>> products = [];
+  List<Map<String, dynamic>> products =
+      []; // Changed to dynamic to handle Firestore data
+
+  void showEditDialog(int index) {
+    // Set the text in the controllers
+    _nameController.text = products[index]['name']!;
+    _categoryController.text = products[index]['category']!;
+    _priceController.text = products[index]['price']!;
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Chỉnh sửa sản phẩm'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: _nameController,
+                decoration: const InputDecoration(
+                    labelText: 'Tên sản phẩm', border: OutlineInputBorder()),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                controller: _categoryController,
+                decoration: const InputDecoration(
+                  labelText: 'Loại sản phẩm',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                controller: _priceController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'Giá sản phẩm',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Đóng dialog khi nhấn Hủy
+              },
+              child: const Text('Hủy',
+                  style: TextStyle(color: Colors.red)), // Nút Hủy với màu đỏ
+            ),
+            TextButton(
+              onPressed: () async {
+                // Update Firestore
+                await FirebaseFirestore.instance
+                    .collection('products')
+                    .doc(products[index]['id'])
+                    .update({
+                  'name': _nameController.text,
+                  'category': _categoryController.text,
+                  'price': _priceController.text,
+                });
+
+                fetchProducts(); // Refresh product list
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Cập nhật'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchProducts(); // Fetch products from Firestore
+  }
+
+  Future<void> fetchProducts() async {
+    final querySnapshot =
+        await FirebaseFirestore.instance.collection('products').get();
+    setState(() {
+      products = querySnapshot.docs.map((doc) {
+        return {
+          'id': doc.id,
+          ...doc.data(),
+        };
+      }).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dữ liệu sản phẩm'),
+        title: const Align(
+          alignment: Alignment.center, // Căn giữa tiêu đề
+          child: const Text(
+            'Thông tin sản phẩm',
+            style: TextStyle(
+              //backgroundColor: Colors.grey,
+
+              fontWeight: FontWeight.bold, // In đậm tiêu đề
+              fontSize: 40, // Tùy chỉnh kích thước chữ (tùy chọn)
+            ),
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -47,36 +148,41 @@ class _ProductScreenState extends State<ProductScreen> {
           controller: _nameController,
           decoration: const InputDecoration(
             labelText: 'Tên sản phẩm',
+            border: OutlineInputBorder(),
           ),
         ),
+        const SizedBox(height: 10),
         TextField(
           controller: _categoryController,
           decoration: const InputDecoration(
             labelText: 'Loại sản phẩm',
+            border: OutlineInputBorder(),
           ),
         ),
+        const SizedBox(height: 10),
         TextField(
           controller: _priceController,
           keyboardType: TextInputType.number,
           decoration: const InputDecoration(
             labelText: 'Giá sản phẩm',
+            border: OutlineInputBorder(),
           ),
-        ),
-        const SizedBox(height: 10),
-        const Row(
-          children: [
-            Icon(Icons.folder),
-            SizedBox(width: 8),
-            Text('pexels-blaque-x-264516-863963.jpg'),
-          ],
         ),
         const SizedBox(height: 10),
         Center(
           child: ElevatedButton(
             onPressed: () {
-              addProduct(_nameController, _categoryController, _priceController,
-                  products, setState);
+              addProduct(context, _nameController, _categoryController,
+                  _priceController, products, fetchProducts);
             },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFF2A5018), // Màu nền của nút
+              foregroundColor: Colors.white, // Màu chữ trên nút
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 50, vertical: 20), // Căn lề bên trong nút
+              textStyle: const TextStyle(
+                  fontSize: 18, fontWeight: FontWeight.bold), // Kiểu chữ đậm
+            ),
             child: const Text('THÊM SẢN PHẨM'),
           ),
         ),
@@ -92,30 +198,33 @@ class _ProductScreenState extends State<ProductScreen> {
         itemBuilder: (context, index) {
           return Card(
             child: ListTile(
-              leading: Image.network(
-                  'https://via.placeholder.com/50'), // Placeholder image
-              title: Text('Tên sp: ${products[index]['name']}'),
+              leading: Image.network(products[index]['image'] ??
+                  'https://via.placeholder.com/50'), // Image from Firestore
+              title: Text('Tên sản phẩm: ${products[index]['name']}'),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Giá sp: ${products[index]['price']}'),
-                  Text('Loại sp: ${products[index]['category']}'),
+                  Text('Giá : ${products[index]['price']}'),
+                  Text('Loại : ${products[index]['category']}'),
                 ],
               ),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  //cHỈNH SỬA SẢN PHẨM
                   IconButton(
-                    icon: const Icon(Icons.edit, color: Colors.yellow),
+                    icon: const Icon(Icons.edit, color: Colors.blue),
                     onPressed: () {
-                      editProduct(index, _nameController, _categoryController,
-                          _priceController, products, setState);
+                      showEditDialog(index);
+                      //editProduct(index, _nameController, _categoryController, _priceController, products, fetchProducts);
                     },
                   ),
                   IconButton(
+                    //XOÁ SẢN PHẨM
                     icon: const Icon(Icons.delete, color: Colors.red),
                     onPressed: () {
-                      deleteProduct(index, products, setState);
+                      deleteProduct(products[index]['id'],
+                          fetchProducts); // Pass product ID
                     },
                   ),
                 ],
