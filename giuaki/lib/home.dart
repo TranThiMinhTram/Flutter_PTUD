@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'add_product.dart'; // Import Add Product logic
-import 'edit_product.dart'; // Import Edit Product logic
+// Import Edit Product logic
 import 'delete_product.dart'; // Import Delete Product logic
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -113,7 +113,7 @@ class _ProductScreenState extends State<ProductScreen> {
       appBar: AppBar(
         title: const Align(
           alignment: Alignment.center, // Căn giữa tiêu đề
-          child: const Text(
+          child: Text(
             'Thông tin sản phẩm',
             style: TextStyle(
               //backgroundColor: Colors.grey,
@@ -176,7 +176,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   _priceController, products, fetchProducts);
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xFF2A5018), // Màu nền của nút
+              backgroundColor: const Color(0xFF2A5018), // Màu nền của nút
               foregroundColor: Colors.white, // Màu chữ trên nút
               padding: const EdgeInsets.symmetric(
                   horizontal: 50, vertical: 20), // Căn lề bên trong nút
